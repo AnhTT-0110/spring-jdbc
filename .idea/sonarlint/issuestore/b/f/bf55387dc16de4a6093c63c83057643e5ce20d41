@@ -1,0 +1,15 @@
+
+R
+java:S1144/"0Remove this unused private "initMessage" method.(õ¹ú÷ÿÿÿÿÿ8İñ é.
+L
+java:S3740D"/Provide the parametrized type for this generic.(ôÍ8†ßÙ¡é.
+U	java:S1060"9Replace this use of System.out or System.err by a logger.(œ•«8ÈÇµé.
+^
+java:S3457&"AFormat specifiers should be used instead of string concatenation.(ØÀÀç8İñ é.
+U	java:S106&"9Replace this use of System.out or System.err by a logger.(ØÀÀç8İñ é.
+Z	java:S106<"9Replace this use of System.out or System.err by a logger.(©»Ó®şÿÿÿÿ8«ª™é.
+Z	java:S1066"9Replace this use of System.out or System.err by a logger.(©»Ó®şÿÿÿÿ8È¹ñé.
+y
+java:S4144:"WUpdate this method so that its implementation is not identical to "release" on line 52.(¼şàÌÿÿÿÿÿ8«ª™é.
+N
+java:S11444",Remove this unused private "release" method.(¦ŞÑ›ùÿÿÿÿ8 öğé.

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-4.2.xsd
+ http://www.springframework.org/schema/tx
+ http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+ http://www.springframework.org/schema/jdbc
+ http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd">
+    <!--    <bean id="helloJavaClazz" class="edu.java.spring.HelloClazz" scope="singleton">-->
+    <!--        <property name="message" value="Welcome to Java Clazz" />-->
+    <!--    </bean>-->
+    <!--    <bean id="helloJavaClazz" class="edu.java.spring.HelloClazz"  >-->
+    <!--         <property name="message" value="Welcome to Java Clazz" />-->
+    <!--    </bean>-->
+    <!--    <bean id="helloJavaClazz" class="edu.java.spring.HelloClazz">-->
+    <!--        &lt;!&ndash;        <constructor-arg type="int" value="5"/>&ndash;&gt;-->
+    <!--    </bean>-->
+
+    <!--    <bean id="helloJavaClazz2" class="edu.java.spring.HelloClazz">-->
+    <!--        <constructor-arg ref="helloJavaClazz"/>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="helloJavaClazz" class="edu.java.spring.HelloClazz" init-method="initMessage">-->
+    <!--        <constructor-arg type="int" value="5"/>-->
+    <!--    </bean>-->
+    <!--    <bean class="edu.java.spring.InitSampleBean"/>-->
+
+    <!--    <bean id="helloWorld" class="edu.java.spring.HelloWorld"/>-->
+
+    <!--    <bean id="helloJavaClazz" class="edu.java.spring.HelloClazz">-->
+    <!--        <property name="message" value="Hello Sub Bean!"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="helloWorld" class="edu.java.spring.HelloWorld">-->
+    <!--        <constructor-arg index="0" value="Thuan"/>-->
+    <!--        <constructor-arg ref="helloJavaClazz"/>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="helloJavaClazz" class="edu.java.spring.HelloClazz">-->
+    <!--        <property name="message" value="Hello Bean Inheritance!" />-->
+    <!--    </bean>-->
+
+    <!--    <bean id="jee01" class="edu.java.spring.JavaClazz">-->
+    <!--        <property name="students">-->
+    <!--            <map>-->
+    <!--                <entry key="Nguyen Van A" value="23" />-->
+    <!--                <entry key="Tran Thi B" value="18" />-->
+    <!--                <entry key="Le Thi C" value="27" />-->
+    <!--                <entry key="Hoang Van D" value="34" />-->
+    <!--            </map>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="helloJavaClazz" class="edu.java.spring.HelloClazz">-->
+    <!--        <property name="clazzes">-->
+    <!--            <list>-->
+    <!--                <ref bean="jee01"/>-->
+    <!--            </list>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+<!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--        <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver"/>-->
+<!--        <property name="url" value="jdbc:derby:C:/Java/sampledb;create=true"/>-->
+<!--        <property name="username" value=""/>-->
+<!--        <property name="password" value=""/>-->
+<!--    </bean>-->
+
+<!--    <bean id="studentJdbcDAO" class="edu.java.spring.jdbc.StudentJdbcDAO" init-method="createTableIfNotExist">-->
+    <bean id="studentJdbcDAO" class="edu.java.spring.jdbc.StudentJdbcDAO" >
+        <property name="dataSource" ref="dataSource"/>
+        <property name="insertQuery" value="INSERT INTO STUDENT (name, age) VALUES (?, ?)"/>
+    </bean>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+        <property name="url" value="jdbc:derby:C:/Temp/sampledb2;create=true"/>
+        <property name="username" value=""/>
+        <property name="password" value=""/>
+    </bean>
+    <jdbc:embedded-database type="DERBY" id="dataSource">
+        <jdbc:script location="classpath:schema.sql"/>
+    </jdbc:embedded-database>
+</beans>
